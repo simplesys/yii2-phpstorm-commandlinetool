@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<framework xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="schemas/frameworkDescriptionVersion1.1.3.xsd" name="yii"
+           invoke="$ProjectFileDir$/yii" alias="y" enabled="true" version="2">
+    <command>
+        <name>help</name>
+        <help><![CDATA[Provides help information about console commands.]]></help>
+        <params>command-name[=null]</params>
+    </command>
+    <command>
+        <name>asset</name>
+        <help><![CDATA[Allows you to combine and compress your JavaScript and CSS files.]]></help>
+    </command>
+    <command>
+        <name>asset/compress</name>
+        <help>(default): Combines and compresses the asset files according to the given configuration.</help>
+        <params>config-file bundle-file</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>asset/template</name>
+        <help>Creates template of configuration file for [[actionCompress]].</help>
+        <params>config-file</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>cache</name>
+        <help><![CDATA[Allows you to flush cache. Lists the caches that can be flushed.]]></help>
+    </command>
+    <command>
+        <name>cache/flush</name>
+        <help><![CDATA[Flushes given cache components.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>cache/flush-all</name>
+        <help><![CDATA[Flushes all caches registered in the system.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>cache/flush-schema</name>
+        <help><![CDATA[Clears DB schema cache for a given connection component.]]></help>
+        <params>db[=db]</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>fixture</name>
+        <help><![CDATA[Manages fixture data loading and unloading.<br/>
+            <br/>
+            load fixtures from UsersFixture class with default namespace "tests\unit\fixtures"<br/>
+            <code>yii fixture/load User</code><br/>
+            also a short version of this command (generate action is default)<br/>
+            <code>yii fixture User</code><br/>
+            load all fixtures<br/>
+            <code>yii fixture "*"</code><br/>
+            load all fixtures except User<br/>
+            <code>yii fixture "*" -User</code><br/>
+            load fixtures with different namespace.<br/>
+            <code>yii fixture/load User --namespace=alias\my\custom\namespace\goes\here</code><br/>
+            <br/>
+            The unload sub-command can be used similarly to unload fixtures.]]></help>
+        <params>fixture-name[=null]</params>
+    </command>
+    <command>
+        <name>fixture/load</name>
+        <help><![CDATA[(default): Loads the specified fixture data.<br/>
+            load the fixture data specified by User and UserProfile.<br/>
+            any existing fixture data will be removed first<br/>
+            <code>yii fixture/load User UserProfile</code><br/>
+            load all available fixtures found under 'tests\unit\fixtures'<br/>
+            <code>yii fixture/load "*"</code><br/>
+            load all fixtures except User and UserProfile<br/>
+            <code>yii fixture/load "*" -User -UserProfile</code>]]></help>
+        <params>fixture-name[=null]</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--globalFixtures" shortcut="">
+                <help><![CDATA[array<br/>
+                    global fixtures that should be applied when loading and unloading.<br/>
+                    By default it is set to `InitDbFixture` that disables and enables integrity check,<br/>
+                    so your data can be safely loaded.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--namespace" shortcut="">
+                <help><![CDATA[string (defaults to 'tests\unit\fixtures')<br/>
+                    default namespace to search fixtures in]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>fixture/unload</name>
+        <help><![CDATA[Unloads the specified fixtures.<br/><br/>
+            unload the fixture data specified by User and UserProfile.<br/>
+            <code>yii fixture/unload User UserProfile</code><br/>
+            unload all fixtures found under 'tests\unit\fixtures'<br/>
+            <code>yii fixture/unload "*"</code><br/>
+            unload all fixtures except User and UserProfile<br/>
+            <code>yii fixture/unload "*" -User -UserProfile</code>]]></help>
+        <params>fixture-name[=null]</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--globalFixtures" shortcut="">
+                <help><![CDATA[array<br/>
+                    global fixtures that should be applied when loading and unloading.<br/>
+                    By default it is set to `InitDbFixture` that disables and enables integrity check,<br/>
+                    so your data can be safely loaded.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--namespace" shortcut="">
+                <help><![CDATA[string (defaults to 'tests\unit\fixtures')<br/>
+                    default namespace to search fixtures in]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii</name>
+        <help><![CDATA[This is the command line version of Gii - a code generator.<br/>
+            You can use this command to generate models, controllers, etc. For example,<br/>
+            to generate an ActiveRecord model based on a DB table, you can run:<br/>
+            <code>yii gii/model --tableName=city --modelClass=City</code>]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii/controller</name>
+        <help><![CDATA[This generator helps you to quickly generate a new controller class with<br/>
+            one or several controller actions and their corresponding views.]]></help>
+        <optionsBefore>
+            <option name="--actions" shortcut="">
+                <help><![CDATA[string (defaults to 'index')<br/>
+                    Provide one or multiple action IDs to generate empty action method(s) in the controller.<br/>
+                    Separate multiple action IDs with commas or spaces. Action IDs should be in lower case.<br/>
+                    For example:<br/>
+                    <code><ul><li>index generatesactionIndex()</li>
+                    <li>create-order generates actionCreateOrder()</li></ul></code>]]></help>
+            </option>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--baseClass" shortcut="">
+                <help><![CDATA[string (defaults to 'yii\web\Controller')<br/>
+                    This is the class that the new controller class will extend from. Please make sure the<br/>
+                    class exists and can be autoloaded]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--controllerClass" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the name of the controller class to be generated. You should<br/>
+                    provide a fully qualified namespaced class (e.g. app\controllers\PostController), <br/>
+                    and class name should be in CamelCase ending with the word Controller. <br/>
+                    Make sure the class is using the same namespace as specified by your application's <br/>
+                    controllerNamespace property.<br/>
+                    that support it.]]></help>
+            </option>
+            <option name="--enableI18N" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--messageCategory" shortcut="">
+                <help><![CDATA[string (defaults to 'app')]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+            <option name="--template" shortcut="">
+                <help><![CDATA[string (defaults to 'default')]]></help>
+            </option>
+            <option name="--viewPath" shortcut="">
+                <help><![CDATA[string<br/>
+                    Specify the directory for storing the view scripts for the controller. You<br/>
+                    may use path alias here, e.g., /var/www/basic/controllers/views/order,<br/>
+                    @app/views/order. If not set, it will default to @app/views/ControllerID]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii/crud</name>
+        <help><![CDATA[This generator generates a controller and views that implement CRUD <br/>
+        (Create, Read, Update, Delete) operations for the specified data model.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--baseControllerClass" shortcut="">
+                <help><![CDATA[string (defaults to 'yii\web\Controller')<br/>
+                    This is the class that the new CRUD controller class will extend from.<br/>
+                    You should provide a fully qualified class name, e.g., yii\web\Controller.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--controllerClass" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the name of the controller class to be generated. You should<br/>
+                    provide a fully qualified namespaced class (e.g. app\controllers\PostController),<br/>
+                    and class name should be in CamelCase ending with the word Controller. <br/>
+                    Make sure the class is using the same namespace as specified by your application's<br/>
+                    controllerNamespace property.]]></help>
+            </option>
+            <option name="--enableI18N" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    This indicates whether the generator should generate strings using Yii::t() method.<br/>
+                    Set this to true if you are planning to make your application translatable.]]></help>
+            </option>
+            <option name="--indexWidgetType" shortcut="">
+                <help><![CDATA[string (defaults to 'grid'<br/>
+                    This is the widget type to be used in the index page to display list of the models.<br/>
+                    You may choose either GridView or ListView]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--messageCategory" shortcut="">
+                <help><![CDATA[string (defaults to 'app')<br/>
+                    This is the category used by Yii::t() in case you enable I18N.]]></help>
+            </option>
+            <option name="--modelClass" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the ActiveRecord class associated with the table that CRUD will be built upon.<br/>
+                    You should provide a fully qualified class name, e.g., app\models\Post.]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+            <option name="--searchModelClass" shortcut="">
+                <help><![CDATA[string (defaults to '')<br/>
+                    This is the name of the search model class to be generated.<br/>
+                    You should provide a fully qualified namespaced class name, e.g., app\models\PostSearch.]]></help>
+            </option>
+            <option name="--template" shortcut="">
+                <help><![CDATA[string (defaults to 'default')]]></help>
+            </option>
+            <option name="--viewPath" shortcut="">
+                <help><![CDATA[string<br/>
+                    Specify the directory for storing the view scripts for the controller. You<br/>
+                    may use path alias here, e.g., /var/www/basic/controllers/views/order,<br/>
+                    @app/views/order. If not set, it will default to @app/views/ControllerID]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii/extension</name>
+        <help><![CDATA[This generator helps you to generate the files needed by a Yii extension.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--authorEmail" shortcut="">
+                <help><![CDATA[(required): string]]></help>
+            </option>
+            <option name="--authorName" shortcut="">
+                <help><![CDATA[(required): string]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--description" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    A sentence or subline describing the main purpose of the extension.]]></help>
+            </option>
+            <option name="--enableI18N" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--keywords" shortcut="">
+                <help><![CDATA[string (defaults to 'yii2,extension')<br/>
+                    Comma separated keywords for this extension.]]></help>
+            </option>
+            <option name="--license" shortcut="">
+                <help><![CDATA[(required): string]]></help>
+            </option>
+            <option name="--messageCategory" shortcut="">
+                <help><![CDATA[string (defaults to 'app')]]></help>
+            </option>
+            <option name="--namespace" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    PSR-4, eg. myself\foobar\ This will be added to your autoloading by composer.<br/>
+                    Do not use yii, yii2 or yiisoft in the namespace.]]></help>
+            </option>
+            <option name="--outputPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/runtime/tmp-extensions')<br/>
+                    The temporary location of the generated files.]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+            <option name="--packageName" shortcut="">
+                <help><![CDATA[string (defaults to 'yii2-')<br/>
+                    This is the name of the extension on packagist, eg. yii2-foobar.]]></help>
+            </option>
+            <option name="--template" shortcut="">
+                <help><![CDATA[string (defaults to 'default')]]></help>
+            </option>
+            <option name="--title" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    A more descriptive name of your application for the README file.]]></help>
+            </option>
+            <option name="--type" shortcut="">
+                <help><![CDATA[string (defaults to 'yii2-extension')]]></help>
+            </option>
+            <option name="--vendorName" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This refers to the name of the publisher, your GitHub user name is usually a good choice,<br/>
+                    eg. myself.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii/model</name>
+        <help><![CDATA[This generator generates an ActiveRecord class for the specified database table.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--baseClass" shortcut="">
+                <help><![CDATA[string (defaults to 'yii\db\ActiveRecord')<br/>
+                    This is the base class of the new ActiveRecord class.
+                    It should be a fully qualified namespaced class name.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[string (defaults to 'db')<br/>
+                    This is the ID of the DB application component.]]></help>
+            </option>
+            <option name="--enableI18N" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    This indicates whether the generator should generate strings using Yii::t() method.<br/>
+                    Set this to true if you are planning to make your application translatable.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--generateLabelsFromComments" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    This indicates whether the generator should generate attribute labels by using the comments
+                    of the corresponding DB columns.]]></help>
+            </option>
+            <option name="--generateRelations" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    This indicates whether the generator should generate relations based on foreign key
+                    constraints it detects in the database.<br/>
+                    Note that if your database contains too many tables, you may want to uncheck this option to
+                    accelerate the code generation process.]]></help>
+            </option>
+            <option name="--messageCategory" shortcut="">
+                <help><![CDATA[string (defaults to 'app')<br/>
+                    This is the category used by Yii::t() in case you enable I18N.]]></help>
+            </option>
+            <option name="--modelClass" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the name of the ActiveRecord class to be generated. The class name should not contain
+                    the namespace part as it is specified in "Namespace".<br/>
+                    You do not need to specify the class name if "Table Name" ends with asterisk, in which case
+                    multiple ActiveRecord classes will be generated.]]></help>
+            </option>
+            <option name="--ns" shortcut="">
+                <help><![CDATA[string (defaults to 'app\models')<br/>
+                    This is the namespace of the ActiveRecord class to be generated, e.g., app\models]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+            <option name="--tableName" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the name of the DB table that the new ActiveRecord class is associated with, e.g. post.
+                    The table name may consist of the DB schema part if needed, e.g. public.post.<br/>
+                    The table name may end with asterisk to match multiple table names, e.g. tbl_* will match tables
+                    who name starts with tbl_. In this case, multiple ActiveRecord classes will be generated, one
+                    for each matching table name; and the class names will be generated from the matching characters.<br/>
+                    For example, table tbl_post will generate Post class.]]></help>
+            </option>
+            <option name="--template" shortcut="">
+                <help><![CDATA[string (defaults to 'default')]]></help>
+            </option>
+            <option name="--useTablePrefix" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    This indicates whether the table name returned by the generated ActiveRecord class should
+                    consider the tablePrefix setting of the DB connection.<br/>
+                    For example, if the table name is tbl_post and tablePrefix=tbl_, the ActiveRecord class
+                    will return the table name as {{%post}}.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>gii/module</name>
+        <help><![CDATA[This generator helps you to generate the skeleton code needed by a Yii module.]]></help>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string. <br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--enableI18N" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--messageCategory" shortcut="">
+                <help><![CDATA[string (defaults to 'app')]]></help>
+            </option>
+            <option name="--moduleClass" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This is the fully qualified class name of the module, e.g., app\modules\admin\Module.]]></help>
+            </option>
+            <option name="--moduleID" shortcut="">
+                <help><![CDATA[(required): string<br/>
+                    This refers to the ID of the module, e.g., admin.]]></help>
+            </option>
+            <option name="--overwrite" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 0)<br/>
+                    whether to overwrite all existing code files when in non-interactive mode.<br/>
+                    Defaults to false, meaning none of the existing code files will be overwritten.<br/>
+                    This option is used only when `--interactive=0`.]]></help>
+            </option>
+            <option name="--template" shortcut="">
+                <help><![CDATA[string (defaults to 'default')]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>message</name>
+        <help><![CDATA[Extracts messages to be translated from source files.<br/><br/>
+            The extracted messages can be saved the following depending on format setting in config file:<br/>
+            - PHP message source files.<br/>
+            - ".po" files.<br/>
+            - Database.<br/><br/>
+            Usage:<br/>
+            1. Create a configuration file using the 'message/config' command:<br/>
+            <code>yii message/config /path/to/myapp/messages/config.php</code><br/>
+            2. Edit the created config file, adjusting it for your web application needs.<br/>
+            3. Run the 'message/extract' command, using created config:<br/>
+            <code>yii message /path/to/myapp/messages/config.php</code>]]></help>
+    </command>
+    <command>
+        <name>message/config</name>
+        <help><![CDATA[Creates a configuration file for the "extract" command.<br/><br/>
+            The generated configuration file contains detailed instructions on how to customize it to
+            fit for your needs.<br/>
+            After customization, you may use this configuration file with the "extract" command.<br/>
+            - file-path (required): string output file name or alias.]]></help>
+        <params>file-path</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>message/extract</name>
+        <help><![CDATA[Extracts messages to be translated from source code.<br/><br/>
+            This command will search through source code files and extract messages that need to be translated
+            in different languages.<br/><br/>
+            - config-file (required): string the path or alias of the configuration file.<br/>
+            You may use the "yii message/config" command to generate this file and then customize it for your needs.]]></help>
+        <params>config-file</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate</name>
+        <help><![CDATA[Manages application migrations.<br/><br/>
+            A migration means a set of persistent changes to the application environment that is shared among
+            different developers. For example, in an application backed by a database, a migration may refer
+            to a set of changes to the database, such as creating a new table, adding a new table column.<br/><br/>
+            This command provides support for tracking the migration history, upgrading or downloading with migrations,
+            and creating new migration skeletons.<br/>
+            The migration history is stored in a database table named as [[migrationTable]]. The table will be
+            automatically created the first time this command is executed, if it does not exist. You may also manually
+            create it as follows:<br/>
+            <code>CREATE TABLE migration (
+                version varchar(180) PRIMARY KEY,
+                apply_time integer
+            )</code><br/>
+            Below are some common usages of this command:<br/>
+            creates a new migration named 'create_user_table'<br/>
+            <code>yii migrate/create create_user_table</code><br/>
+            applies ALL new migrations<br/>
+            <code>yii migrate</code><br/>
+            reverts the last applied migration<br/>
+            <code>yii migrate/down</code>]]></help>
+    </command>
+    <command>
+        <name>migrate/create</name>
+        <help><![CDATA[Creates a new migration.<br/><br/>
+        This command creates a new migration using the available migration template.<br/>
+        After using this command, developers should modify the created migration
+        skeleton by filling up the actual migration logic.<br/>
+        <code>yii migrate/create create_user_table</code><br/><br/>
+        name (required): string<br/>
+        the name of the new migration. This should only contain letters, digits and/or underscores.]]></help>
+        <params>name-migration</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+            <option name="--templateFile" shortcut="">
+                <help><![CDATA[defaults to '@yii/views/migration.php']]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/down</name>
+        <help><![CDATA[Downgrades the application by reverting old migrations.<br/><br/>
+            For example,<br/>
+            yii migrate/down     # revert the last migration<br/>
+            yii migrate/down 3   # revert the last 3 migrations<br/>
+            yii migrate/down all # revert all migrations<br/>
+            <br/><br/>
+            - limit: integer (defaults to 1)<br/>
+            the number of migrations to be reverted. Defaults to 1, meaning the last applied migration
+            will be reverted.]]></help>
+        <params>limit</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/history</name>
+        <help><![CDATA[Displays the migration history.<br/><br/>
+            This command will show the list of migrations that have been applied so far.For example,<br/>
+            yii migrate/history     # showing the last 10 migrations<br/>
+            yii migrate/history 5   # showing the last 5 migrations<br/>
+            yii migrate/history all # showing the whole history<br/>
+            <br/><br/>
+            - limit: integer (defaults to 10)<br/>
+            the maximum number of migrations to be displayed. If it is 0, the whole migration history will
+            be displayed.]]></help>
+        <params>limit</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/mark</name>
+        <help><![CDATA[Modifies the migration history to the specified version. No actual migration will be performed.<br/>
+            yii migrate/mark 101129_185401 # using timestamp<br/>
+            yii migrate/mark m101129_185401_create_user_table # using full name<br/>
+            <br/><br/>
+            - version: (required): string<br/>
+            the version at which the migration history should be marked. This can be either the timestamp or the full
+            name of the migration.]]></help>
+        <params>version</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/new</name>
+        <help><![CDATA[Displays the un-applied new migrations.<br/><br/>
+            This command will show the new migrations that have not been applied. For example,<br/>
+            yii migrate/new     # showing the first 10 new migrations<br/>
+            yii migrate/new 5   # showing the first 5 new migrations<br/>
+            yii migrate/new all # showing all new migrations<br/>
+            <br/><br/>
+            - limit: integer (defaults to 10)<br/>
+            the maximum number of new migrations to be displayed. If it is all, , all available new migrations
+            will be displayed.]]></help>
+        <params>limit</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/redo</name>
+        <help><![CDATA[Redoes the last few migrations.<br/><br/>
+            This command will first revert the specified migrations, and then apply them again. For example,<br/>
+            yii migrate/redo     # redo the last applied migration<br/>
+            yii migrate/redo 3   # redo the last 3 applied migrations<br/>
+            yii migrate/redo all # redo all migrations<br/>
+            <br/><br/>
+            - limit: integer (defaults to 1)<br/>
+            the number of migrations to be redone. Defaults to 1, meaning the last applied migration will
+            be redone.]]></help>
+        <params>limit</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/to</name>
+        <help><![CDATA[Upgrades or downgrades till the specified version.<br/><br/>
+            Can also downgrade versions to the certain apply time in the past by providing a UNIX timestamp
+            or a string parseable by the strtotime() function. This means that all the versions applied after
+            the specified certain time would be reverted.<br/>
+            This command will first revert the specified migrations, and then apply them again. For example,<br/>
+            yii migrate/to 101129_185401                      # using timestamp<br/>
+            yii migrate/to m101129_185401_create_user_table   # using full name<br/>
+            yii migrate/to 1392853618                         # using UNIX timestamp<br/>
+            yii migrate/to "2014-02-15 13:00:50"              # using strtotime() parseable string
+            <br/><br/>
+            - version: (required): string<br/>
+            either the version name or the certain time value in the past that the application should be
+            migrated to. This can be either the timestamp, the full name of the migration, the UNIX
+            timestamp, or the parseable datetime string.]]></help>
+        <params>version</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <command>
+        <name>migrate/up</name>
+        <help><![CDATA[Upgrades the application by applying new migrations. For example,<br/>
+            yii migrate     # apply all new migrations<br/>
+            yii migrate 3   # apply the first 3 new migrations
+            <br/><br/>
+            - limit: integer (defaults to 0)<br/>
+            the number of new migrations to be applied. If 0, it means applying all available new migrations.]]></help>
+        <params>limit</params>
+        <optionsBefore>
+            <option name="--appconfig" shortcut="">
+                <help><![CDATA[string.<br/>
+                    Custom application configuration file path.<br/>
+                    If not set, default application configuration is used.]]></help>
+            </option>
+            <option name="--color" shortcut="">
+                <help><![CDATA[boolean, 0 or 1<br/>
+                    whether to enable ANSI color in the output.<br/>
+                    If not set, ANSI color will only be enabled for terminals that support it.]]></help>
+            </option>
+            <option name="--db" shortcut="">
+                <help><![CDATA[Connection|array|string (defaults to 'db')<br/>
+                    the DB connection object or the application component ID of the DB connection to use
+                    when applying migrations. Starting from version 2.0.3, this can also be a configuration
+                    array for creating the object.]]></help>
+            </option>
+            <option name="--interactive" shortcut="">
+                <help><![CDATA[boolean, 0 or 1 (defaults to 1)<br/>
+                    whether to run the command interactively.]]></help>
+            </option>
+            <option name="--migrationPath" shortcut="">
+                <help><![CDATA[string (defaults to '@app/migrations')<br/>
+                    the directory storing the migration classes. This can be either a path alias or a directory.]]></help>
+            </option>
+            <option name="--migrationTable" shortcut="">
+                <help><![CDATA[string (defaults to '{{%migration}}')<br/>
+                    the name of the table for keeping applied migration information.]]></help>
+            </option>
+        </optionsBefore>
+    </command>
+    <help><![CDATA[Yii 2.0.3]]></help>
+</framework>
